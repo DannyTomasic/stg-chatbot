@@ -15,7 +15,7 @@ export default async function IndexPage() {
   const session = (await auth()) as Session
   const missingKeys = await getMissingKeys()
 
-  if (!session?.user) redirect(`/login`)
+  if (!session) return redirect(`/login`)
 
   return (
     <AI initialAIState={{ chatId: id, messages: [] }}>
