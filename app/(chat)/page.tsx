@@ -14,6 +14,7 @@ export default async function IndexPage() {
   const id = nanoid()
   const session = (await auth()) as Session
   const missingKeys = await getMissingKeys()
+  console.log('session', session)
     
   return (
     <>
