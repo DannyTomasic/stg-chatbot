@@ -14,12 +14,15 @@ export default async function IndexPage() {
   const id = nanoid()
   const session = (await auth()) as Session
   const missingKeys = await getMissingKeys()
-
-  if (!session) return redirect(`/login`)
-
+    
   return (
-    <AI initialAIState={{ chatId: id, messages: [] }}>
-      <Chat id={id} session={session} missingKeys={missingKeys} />
-    </AI>
+    <>
+      {!session 
+        ? redirect(`/login`) 
+        : <AI initialAIState={{ chatId: id, messages: [] }}>
+          <Chat id={id} session={session} missingKeys={missingKeys} />
+        </AI>
+      } 
+    </>
   )
 }
