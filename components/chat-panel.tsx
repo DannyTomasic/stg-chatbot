@@ -20,6 +20,11 @@ export interface ChatPanelProps {
   isAtBottom: boolean
   scrollToBottom: () => void
 }
+export interface messageProps {
+  heading: string
+  subheading: string
+  message: string
+}
 
 export function ChatPanel({
   id,
@@ -34,7 +39,7 @@ export function ChatPanel({
   const { submitUserMessage } = useActions()
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
-  const exampleMessages = [
+  const exampleMessages: messageProps[] = [
     // {
     //   heading: 'Help send an email',
     //   subheading: 'trending memecoins today?',
